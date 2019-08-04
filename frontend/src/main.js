@@ -1,19 +1,36 @@
 import Vue from 'vue'
+import './plugins/vuetify'
 import App from './App.vue'
-import Axios from 'axios'
 import router from './router'
-import BootstrapVue from "bootstrap-vue"
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap-vue/dist/bootstrap-vue.css"
+// eslint-disable-next-line
+import Axios from 'axios'
+// eslint-disable-next-line
+import {Howl, Howler} from 'howler'
+
+import { store } from './store/store'
 
 Vue.config.productionTip = false
-Axios.defaults.baseURL = process.env.API_ENDPOINT
 
-Vue.use(BootstrapVue)
+Vue.filter('numbers', (value) => {
+  let number = value + 1
+  if (number < 10) {
+    return "0" + number + "."
+  }
+  return number + "."
+})
+
+Vue.filter('minutes', (value) => {
+  if (!value || typeof value !== "number") return "00:00"
+  let min = parseInt(value / 60),
+      sec = parseInt(value % 60)
+  min = min < 10 ? "0" + min : min
+  sec = sec < 10 ? "0" + sec : sec
+  value = min + ":" + sec
+  return value
+})
 
 new Vue({
-  el: '#app',
   router,
-  components: { App },
-  template: '<App/>'
-})
+  store,
+  render: h => h(App),
+}).$mount('#app')
