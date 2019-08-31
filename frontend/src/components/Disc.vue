@@ -52,7 +52,7 @@
                 var album = resp['album']
                 this.breadcrumbs = [
                     { 'text': artist.name, 'href': '#/geluid/artist/' + artist.id },
-                    { 'text': album.name, 'href': '#geluid/album/' + album.id, 'disabled': true },
+                    { 'text': album.name, 'href': '#/geluid/album/' + album.id, 'disabled': true },
                 ]
             })
         },

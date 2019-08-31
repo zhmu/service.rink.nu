@@ -23,11 +23,6 @@
     },
     data () {
       return {
-        /*playlist: [
-          {title: "IRQ 0 SYSTEM CLOCK", artist: "MASTER BOOT RECORD", howl: null, display: true, fileid: 43169, duration: 12},
-          {title: "IRQ 1 KEYBOARD", artist: "MASTER BOOT RECORD", howl: null, display: true, fileid: 43157, duration: 34},
-          {title: "IRQ 2 CASCADE", artist: "MASTER BOOT RECORD", howl: null, display: true, fileid: 43171, duration: 56},
-        ],*/
         selectedTrack: null,
         index: 0,
         playing: false
