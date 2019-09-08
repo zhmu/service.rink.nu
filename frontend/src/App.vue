@@ -5,11 +5,6 @@
         <v-toolbar-title slot="activator">
           service.rink.nu
         </v-toolbar-title>
-        <v-list>
-          <v-list-tile v-on:click="geluid()">
-            Geluid
-          </v-list-tile>
-        </v-list>
       </v-menu>
     </v-toolbar>
 
@@ -47,23 +42,23 @@ export default {
     Player
   },
   methods: {
-    geluid() {
-      ArtistService.getAll().then((response) => {
-        var resp = response.data
-        resp.sort((a, b) => {
-            return a.name < b.name ? -1 : 1
-        })
-
-        var items = [ ]
-        resp.forEach(function(r) {
-          items.push({ 'name': r.name, 'id': r.artistid, 'items': [ ] })
-        })
-        this.items = items
-      })
-    },
     enqueue() {
         alert('enqueue')
     }
+  },
+  created() {
+    ArtistService.getAll().then((response) => {
+      var resp = response.data
+      resp.sort((a, b) => {
+          return a.name < b.name ? -1 : 1
+      })
+
+      var items = [ ]
+      resp.forEach(function(r) {
+        items.push({ 'name': r.name, 'id': r.artistid, 'items': [ ] })
+      })
+      this.items = items
+    })
   },
   data () {
     return {
